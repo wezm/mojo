@@ -6,14 +6,14 @@ describe 'Mojo'
     end
   end
 
-  describe '{ . }'
+  describe '{{ . }}'
     it 'should reference self '
       var s = render('welcome', 'Tj')
       s.should.include('<p>Welcome Tj</p>')
     end
   end
 
-  describe '{ name }'
+  describe '{{ name }}'
     it 'should buffer the given property name'
       var s = render('article', { title: 'Mojo', body: 'Is awesome' })
       s.should.include('<div class="article">')
@@ -33,14 +33,14 @@ describe 'Mojo'
     end
   end
 
-  describe '{! comment }'
+  describe '{{! comment }}'
     it 'should render nothing'
       var s = render('comments')
       strip(s).should.be_empty
     end
   end
 
-  describe '{# name } {/ name }'
+  describe '{{# name }} {{/ name }}'
     describe 'with enumerable property'
       it 'should render the collection'
         var tj = { name: 'Tj', age: 22 }
